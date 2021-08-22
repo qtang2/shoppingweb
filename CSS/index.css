@@ -4,41 +4,110 @@
     margin-left: 220px;
     margin-top: 10px;
 }
+
 .focus {
+    overflow: hidden;
+    position: relative;
     float: left;
     height: 455px;
     width: 721px;
+    /* border: 1px solid #000; */
 }
+
+.focus ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600%;
+    /* z-index: 999; */
+}
+
+.focus ul li {
+    float: left;
+    /* z-index: 999; */
+}
+
+
+/* .focus ul li img {
+    z-index: 999;
+} */
+
+.arrow-l,
+.arrow-r {
+    display: 'none';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .5);
+    color: white;
+    font-size: 14px;
+    z-index: 2;
+}
+
+.arrow-r {
+    right: 0;
+}
+
+.circle {
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+    /* list-style: square; */
+}
+
+.circle li {
+    float: left;
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    margin: 0 3px;
+}
+
+.current {
+    background-color: white;
+}
+
 .newsflash {
     float: right;
     height: 455px;
     width: 250px;
-    
 }
+
 .news {
     height: 165px;
     border: 1px solid #e4e4e4;
 }
+
 .news-hd {
     height: 33px;
     line-height: 33px;
     padding: 0 15px;
     border-bottom: 1px dotted #ccc;
 }
+
 .news-hd h5 {
     float: left;
     font-size: 14px;
 }
+
 .news-hd .more {
     float: right;
 }
+
 .news-hd .more::after {
     font-family: 'icomoon';
     content: '\e920';
 }
+
 .news-bd {
     padding: 5px 15px 0;
 }
+
 .news-bd ul li {
     overflow: hidden;
     white-space: nowrap;
@@ -46,17 +115,19 @@
     height: 24px;
     line-height: 24px;
 }
+
 .lifeservice {
     overflow: hidden;
     height: 209px;
     border: 1px solid #e4e4e4;
     border-top: 0;
     /* background-color: red; */
-
 }
+
 .lifeservice ul {
     width: 252px;
 }
+
 .lifeservice ul li {
     position: relative;
     float: left;
@@ -66,38 +137,39 @@
     border-bottom: 1px solid #e4e4e4;
     text-align: center;
 }
+
 .lifeservice ul li i {
     display: inline-block;
     height: 28px;
     width: 24px;
     margin-top: 12px;
-    background:  url(../images/icons.png) no-repeat -16px -16px;
-    
-}
-.lifeservice ul li .flight {
-    background: url(../images/icons.png) no-repeat -81px -16px;
-    
+    background: url(../images/icons.png) no-repeat -16px -16px;
 }
 
-.lifeservice  .discount{
+.lifeservice ul li .flight {
+    background: url(../images/icons.png) no-repeat -81px -16px;
+}
+
+.lifeservice .discount {
     position: absolute;
     top: 0;
     right: 0;
     height: 0;
     width: 0;
-    border-top: 10px solid #589d5a ;
+    border-top: 10px solid #589d5a;
     border-left: 6px solid #589d5a;
     border-right: 6px solid #589d5a;
     border-bottom: 5px solid transparent;
 }
+
 .lifeservice ul li .movie {
     background: url(../images/icons.png) no-repeat -142px -18px;
-    
 }
+
 .lifeservice ul li .game {
     background: url(../images/icons.png) no-repeat -205px -18px;
-    
 }
+
 .bargain {
     margin-top: 5px;
     /* height: 200px; */
@@ -108,6 +180,7 @@
     margin-top: 12px;
     background-color: #ebebeb;
 }
+
 .recom_hd {
     float: left;
     height: 163px;
@@ -116,17 +189,21 @@
     background-color: #5c5251;
     text-align: center;
 }
+
 .recom_bd {
     float: left;
 }
+
 .recom_bd ul li {
     position: relative;
     float: left;
 }
+
 .recom_bd ul li img {
     width: 248px;
     height: 163px;
 }
+
 .recom_bd ul li:nth-child(-n+3):after {
     content: '';
     position: absolute;
@@ -136,45 +213,56 @@
     height: 145px;
     background: #ddd;
 }
+
 .floor .box_hd {
     height: 30px;
     border-bottom: 1px solid #c81623;
 }
+
 .box_hd h3 {
     float: left;
     font-size: 18px;
     font-weight: 400;
     color: #c81623;
 }
- .tab_list {
+
+.tab_list {
     float: right;
 }
+
 .tab_list ul li {
     float: left;
     line-height: 30px;
 }
-.tab_list ul li a{
+
+.tab_list ul li a {
     margin: 0 15px;
 }
+
 .floor .appliance {
     margin-top: 30px;
 }
+
 .box_bd {
     height: 361px;
     /* background-color: pink; */
 }
-.tab_list_item>div{
+
+.tab_list_item>div {
     float: left;
     height: 361px;
 }
+
 .col_210 {
     width: 210px;
     text-align: center;
     background-color: #f9f9f9;
 }
+
 .col_210 ul {
     padding-left: 12px;
 }
+
 .col_210 ul li {
     float: left;
     height: 34px;
@@ -184,19 +272,24 @@
     text-align: center;
     border-bottom: 1px solid #ccc;
 }
+
 .col_329 {
     width: 329px;
 }
+
 .col_221 {
     width: 221px;
     border-right: 1px solid #ccc;
 }
+
 .col_219 {
     width: 219px;
 }
+
 .col_210 {
     width: 210px;
 }
+
 .bb {
     display: block;
     border-bottom: 1px solid #ccc;
