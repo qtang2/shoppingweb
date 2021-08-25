@@ -6,7 +6,11 @@ function animate(obj, target, callback) {
 
         if (obj.offsetLeft == target) {
             clearInterval(obj.timer)
-            if (callback) { callback() }
+                // if (callback) { callback() }
+                //another writting of the above 
+                //only when both side true callback() will be run
+                //if callback false, quit execute the following code
+            callback && callback()
         }
         obj.style.left = obj.offsetLeft + step + 'px'
 

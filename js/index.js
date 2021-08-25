@@ -4,7 +4,16 @@ window.addEventListener('load', function() {
     let arrow_r = this.document.querySelector('.arrow-r')
     let focus = this.document.querySelector('.focus')
     let focusWidth = focus.offsetWidth
-        //when mouse enter, arrow left and right show up
+
+    //when scroll, the toggleTool will excute which lead to change li's background color many times, so set a flag to control it
+    let canScroll = true
+
+
+    //after refresh page if still need to show the fixedtool
+    toggleTool()
+
+
+    //when mouse enter, arrow left and right show up
     focus.addEventListener('mouseenter', function() {
 
         arrow_l.style.display = 'block'
@@ -57,34 +66,52 @@ window.addEventListener('load', function() {
         //infinite loop pictures
     let num = 0
     let circle = 0
-    arrow_r.addEventListener('click', function() {
-        if (num == ul.children.length - 1) {
-            ul.style.left = 0
-            num = 0
-        }
-        num++
-        animate(ul, -num * focusWidth)
 
-        circle++
-        if (circle == 4) {
-            circle = 0
+    //set a flag to prevent user click arrow too fast, when true can click , when false cannot. Only set true after the animation is completed, which can happen in callback function of animate()
+    let flag = true
+    arrow_r.addEventListener('click', function() {
+        if (flag) {
+            //set flag to false to prevent click too fast
+            flag = false
+            if (num == ul.children.length - 1) {
+                ul.style.left = 0
+                num = 0
+            }
+            num++
+
+            //set flag to true in callback function
+            animate(ul, -num * focusWidth, function() {
+                flag = true
+            })
+
+            circle++
+            if (circle == 4) {
+                circle = 0
+            }
+            setCircleBG()
         }
-        setCircleBG()
+
     })
 
     arrow_l.addEventListener('click', function() {
-        if (num == 0) {
-            num = ul.children.length - 1
-            ul.style.left = -num * focusWidth
-        }
-        num--
-        animate(ul, -num * focusWidth)
+        if (flag) {
+            flag = false
+            if (num == 0) {
+                num = ul.children.length - 1
+                ul.style.left = -num * focusWidth
+            }
+            num--
+            animate(ul, -num * focusWidth, function() {
+                flag = true
+            })
 
-        circle--
-        if (circle < 0) {
-            circle = ol.children.length - 1
+            circle--
+            if (circle < 0) {
+                circle = ol.children.length - 1
+            }
+            setCircleBG()
         }
-        setCircleBG()
+
     })
 
     function setCircleBG() {
@@ -98,4 +125,44 @@ window.addEventListener('load', function() {
         //Manually call the click event of arrow_r element
         arrow_r.click()
     }, 2000);
+
+
+
+    function toggleTool() {
+        if ($(document).scrollTop() >= $('.recom').offset().top) {
+            $(".fixedtool").fadeIn()
+        } else {
+            $(".fixedtool").fadeOut()
+
+        }
+    }
+    $(this.window).scroll(function() {
+        toggleTool()
+        if (canScroll) {
+            $('.floor .w').each(function(i, ele) {
+                if ($(document).scrollTop() >= $(ele).offset().top) {
+                    $('.fixedtool li').eq(i).addClass('current').siblings().removeClass('current')
+                }
+            })
+        }
+        // toggleTool()
+        // $('.floor .w').each(function(i, ele) {
+        //     if ($(document).scrollTop() >= $(ele).offset().top) {
+        //         $('.fixedtool li').eq(i).addClass('current').siblings().removeClass('current')
+        //     }
+        // })
+    })
+
+    $('.fixedtool ul').on("click", "li", function() {
+        canScroll = false
+        let current = $('.floor .w').eq($(this).index()).offset().top
+            //callback function will set canScroll to true again , then can scroll to change li's backgrounds
+        $("body, html").stop().animate({
+            scrollTop: current
+        }, function() {
+            canScroll = true
+        })
+        $(this).addClass('current').siblings().removeClass('current')
+
+    })
 })

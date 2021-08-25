@@ -294,3 +294,24 @@
     display: block;
     border-bottom: 1px solid #ccc;
 }
+
+.fixedtool {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 0;
+    width: 70px;
+}
+
+.fixedtool ul li {
+    padding: 3px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #f1f1f1;
+    border-bottom: 2px solid #666;
+}
+
+.fixedtool ul li.current {
+    background-color: #c81623;
+    color: white;
+}
